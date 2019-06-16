@@ -10,10 +10,10 @@ public class GildedRose {
 
 	public void updateQuality() {
 		for (int i = 0; i < items.length; i++) {
-			if (!validateItemName(items[i],"Aged Brie")
-					&& !validateItemName(items[i],"Backstage passes to a TAFKAL80ETC concert")) {
+			if (!validateItemName(items[i],EnumItem.AGED_BRIE)
+					&& !validateItemName(items[i],EnumItem.BACKSTAGE_PASSESS_TAFKAL80ETC_CONCERT)) {
 				if (items[i].quality > 0) {
-					if (!validateItemName(items[i],"Sulfuras, Hand of Ragnaros")) {
+					if (!validateItemName(items[i],EnumItem.SULFURAS_HAND_OF_RAGNAROS)) {
 						items[i].quality = items[i].quality - 1;
 					}
 				}
@@ -21,7 +21,7 @@ public class GildedRose {
 				if (items[i].quality < 50) {
 					items[i].quality = items[i].quality + 1;
 
-					if (validateItemName(items[i],"Backstage passes to a TAFKAL80ETC concert")) {
+					if (validateItemName(items[i],EnumItem.BACKSTAGE_PASSESS_TAFKAL80ETC_CONCERT)) {
 						if (items[i].sellIn < 11) {
 							if (items[i].quality < 50) {
 								items[i].quality = items[i].quality + 1;
@@ -37,15 +37,15 @@ public class GildedRose {
 				}
 			}
 
-			if (!validateItemName(items[i],"Sulfuras, Hand of Ragnaros")) {
+			if (!validateItemName(items[i],EnumItem.SULFURAS_HAND_OF_RAGNAROS)) {
 				items[i].sellIn = items[i].sellIn - 1;
 			}
 
 			if (items[i].sellIn < 0) {
-				if (!validateItemName(items[i],"Aged Brie")) {
-					if (!validateItemName(items[i],"Backstage passes to a TAFKAL80ETC concert")) {
+				if (!validateItemName(items[i],EnumItem.AGED_BRIE)) {
+					if (!validateItemName(items[i],EnumItem.BACKSTAGE_PASSESS_TAFKAL80ETC_CONCERT)) {
 						if (items[i].quality > 0) {
-							if (!validateItemName(items[i],"Sulfuras, Hand of Ragnaros")) {
+							if (!validateItemName(items[i],EnumItem.SULFURAS_HAND_OF_RAGNAROS)) {
 								items[i].quality = items[i].quality - 1;
 							}
 						}
@@ -61,9 +61,10 @@ public class GildedRose {
 		}
 	}
 	
-	public boolean validateItemName(Item item, String validar) {
+	public boolean validateItemName(Item item, EnumItem enumItem) {
 		boolean validate= false;
-		if(item.name.equals(validar)) 
+		
+		if(item.getEnumItem()==enumItem) 
 			validate=true;
 			
 		return validate;
