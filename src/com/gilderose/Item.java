@@ -1,18 +1,24 @@
 package com.gilderose;
 
-public class Item {
+public abstract class Item {
 
-    public String name;
+    protected String name;
 
-    public int sellIn;
+    protected int sellIn;
 
-    public int quality;
+    protected int quality;
 
     public Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
     }
+    
+    public void updateQuality() {
+    	this.strategy();
+    }
+    
+    protected abstract void strategy();
     
     public EnumItem getEnumItem() {
     	switch (this.name) {
