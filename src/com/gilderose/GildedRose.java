@@ -13,7 +13,7 @@ public class GildedRose {
 			if (!validateEnumItem(items[i],EnumItem.AGED_BRIE)
 					&& !validateEnumItem(items[i],EnumItem.BACKSTAGE_PASSESS_TAFKAL80ETC_CONCERT)) {
 				if (items[i].quality > 0) {
-					if (!validateEnumItem(items[i],EnumItem.SULFURAS_HAND_OF_RAGNAROS)) {						
+					if (!validateEnumItem(items[i],EnumItem.SULFURAS_HAND_OF_RAGNAROS)) {
 						qualityItemCalculate(items[i],-1);
 					}
 				}
@@ -38,7 +38,7 @@ public class GildedRose {
 			}
 
 			if (!validateEnumItem(items[i],EnumItem.SULFURAS_HAND_OF_RAGNAROS)) {
-				items[i].sellIn = items[i].sellIn - 1;
+				sellInItemCalculate(items[i], -1);
 			}
 
 			if (items[i].sellIn < 0) {
@@ -73,6 +73,11 @@ public class GildedRose {
 	
 	public void qualityItemCalculate(Item item, int value) {
 		item.quality=item.quality+value;
+		
+	}
+	
+	public void sellInItemCalculate(Item item, int value) {
+		item.sellIn=item.sellIn+value;
 		
 	}
 	
